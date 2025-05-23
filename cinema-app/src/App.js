@@ -1,23 +1,35 @@
 import './App.css';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userUsername, setUsername] = useState("");
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    axios.post("http://localhost:8000/api/auth/", {}, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+      .then((response) => {
+        setIsLoggedIn(true);
+        setUsername(response.data.username);
+      })
+      .catch((error) => {
+        setIsLoggedIn(false);
+        setUsername("");
+      });
+  }, []);
+
+  return isLoggedIn ? (
+    <Dashboard userUsername={userUsername} setIsLoggedIn={setIsLoggedIn} />
+  ) : (
+    <Authentication
+      setIsLoggedIn={setIsLoggedIn}
+      setUserUsername={setUsername}
+    />
   );
 }
 
