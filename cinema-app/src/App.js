@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userUsername, setUsername] = useState("");
+  const [userUsername, setUserUsername] = useState("");
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
