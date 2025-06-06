@@ -1,0 +1,167 @@
+.tag {
+    color: #ffffff;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 15px;
+    margin: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.tag.selected {
+    background-color: #E31C25;
+}
+
+.filter-tag {
+    border: 2px solid #E31C25;
+}
+
+/* -----MovieCard------- */
+
+.movie-card {
+    background-color: #2c2c2c;
+    overflow: hidden;
+    width: 300px;
+    height: 398px;
+    text-align: center;
+    margin: 15px;
+    color: #FFFFFF;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-image-container {
+    position: relative;
+}
+
+.movie-image {
+    width: 100%;
+    height: 300px;
+    display: block;
+    object-fit: cover;
+}
+
+.movie-icons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+.icon {
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.icon.active {
+    color: #f39c12;
+}
+
+.movie-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(68, 68, 68, 0.8);
+    padding: 10px;
+    margin: 0;
+    color: #fff;
+}
+
+.movie-synopsis-container {
+    font-size: 12px;
+    color: #ffffff;
+    flex-grow: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-synopsis {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movie-genres {
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+
+.genre-tag {
+    size: 15px;
+    background-color: #E31C25;
+    display: inline-block;
+    border-radius: 15px;
+    padding: 2px 10px;
+    margin: 5px;
+    color: #fff;
+}
+
+.movie-button {
+    background-color: #f39c12;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 10px auto;
+}
+
+.movie-button:hover {
+    background-color: #e67e22;
+}
+
+
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.filter-sort {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 688px;
+}
+
+.filter-tags {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+
+.search-bar {
+    border-radius: 15px;
+    width: 535px;
+    background-color: #2c2c2c;
+}
+
+.year-inputs {
+    color: #FFFFFF;
+    display: flex;
+    gap: 20px;
+}
+
+.sort-input select {
+    background-color: #2c2c2c;
+    appearance: none;
+    border-bottom-color: #E31C25;
+}
+
+.sort-input>label {
+    color: #FFFFFF;
+}

@@ -1,40 +1,46 @@
 .dashboard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #222222;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: auto 1fr;
     height: 100vh;
-    color: white;
 }
 
-.dashboard,
-.fave-movies {
-    background-color: #222222;
+.header {
+    grid-column: 1 / -1;
 }
 
-.homepage {
-    padding-top: 70px;
-    background-color: #222222;
+.sidebar {
+    grid-row: 2;
 }
 
-.cards {
+.main-content {
+    grid-row: 2;
+    overflow-y: auto;
+}
+
+.movie-list {
+    list-style-type: none;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 3px;
-    padding: 0 2rem;
-    padding-left: 9.375rem;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
 }
 
-.fave {
-    color: white;
+.movie-list li {
+    flex: 0 1 200px;
+    margin: 10px;
+}
+
+.dashboard {
+    background-color: #222222;
+    height: 100%;
+}
+
+.favorites-title {
+    font-size: 63px;
+    color: #FFFFFF;
+    text-decoration: underline red;
+    text-underline-offset: 20px;
     text-align: center;
-}
-
-.fave h1 {
-    font-weight: 400;
-    font-size: 5rem;
-    text-decoration: underline;
-    text-decoration-color: red;
 }
