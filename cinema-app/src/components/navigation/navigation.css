@@ -1,134 +1,137 @@
-.header {
-    width: 100%;
-    height: 60px;
-    background-color: #161616;
+.header-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
-    box-sizing: border-box;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 2;
+    padding: 10px 20px;
+    background-color: #161616;
+    font-family: 'Roboto', sans-serif;
 }
 
-.header h1 {
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 400;
-    margin-left: 20px;
+.header-nav span:first-child {
+    font-size: 15px;
+    color: #FFFFFF;
 }
 
-.header div {
+.header-nav div {
     display: flex;
     align-items: center;
 }
 
-.header img {
+.avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    margin-left: 75%;
-    border: 2px solid red;
-}
-
-.header p {
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 400;
-}
-
-.header span {
-    color: #bb000e;
-    font-size: 1rem;
-    font-weight: 400;
-    margin-right: 20px;
-    margin-left: 20px;
-}
-
-.header span button {
-    background-color: transparent;
-    color: #bb000e;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-.sidebar {
-    width: 60px;
-    height: 100%;
-    background-color: #bb000e;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    padding-top: 70px;
-}
-
-.sidebar_link li {
-    display: flex;
-}
-
-.sidebar_link li p {
-    margin: 0;
-    display: none;
-}
-
-.sidebar .sidebar_activities {
-    display: none;
-}
-
-.sidebar:hover {
-    width: 250px;
-}
-
-.sidebar:hover .sidebar_activities {
-    display: block;
-}
-
-.sidebar:hover .sidebar_link li p {
-    display: block;
-}
-
-.sidebar .sidebar_link {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.sidebar .sidebar_link li {
-    color: white;
-    padding: 10px 20px;
-    box-sizing: border-box;
-    background-color: #bb000e;
-    text-align: left;
-    cursor: pointer;
-}
-
-.sidebar .sidebar_link li svg {
     margin-right: 10px;
+    border: 3px solid #BB000E;
 }
 
-.sidebar .sidebar_link li:hover {
-    background-color: #e31c25;
+.header-nav p {
+    margin: 0;
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-right: 15px;
 }
 
-.sidebar .sidebar_activities {
-    color: white;
+.logout {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: #BB000E;
+}
+
+.logout i,
+.logout svg {
+    margin-right: 5px;
+}
+
+.sidebar-nav {
+    background-color: #BB000E;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    height: 100%;
+}
+
+.sidebar-nav.collapsed {
+    width: 50px;
+}
+
+.sidebar-nav.expanded {
+    width: 218px;
+}
+
+.navigation-list,
+.activity-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 16px;
+}
+
+.activities-container {
     background-color: #2c2c2c;
-    padding: 10px 20px;
-    list-style: none;
-    text-align: left;
-    margin: 10px;
+    width: 208px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.sidebar .sidebar_activities button {
+.activities-title {
+    margin-top: 10px;
+    font-size: 24px;
+    text-align: center;
+    color: #FFFFFF;
     text-decoration: underline;
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
+    text-underline-offset: 10px;
+}
+
+.navigation-list li {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.navigation-list li .icon {
+
+    color: #FFFFFF;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    margin-left: 0;
+}
+
+.navigation-list li .text {
+    font-size: 16px;
+    color: #FFFFFF;
+    opacity: 0;
+    margin-left: 0;
+    transition: opacity 0.3s ease, margin-left 0.3s ease;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.sidebar-nav.expanded .navigation-list li .text {
+    opacity: 1;
+    margin-left: 10px;
+}
+
+.activity-list {
+    font-size: 12px;
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-nav.expanded .activity-list {
+    opacity: 1;
+}
+
+.navigation-list li.active::after {
+    content: '→';
+    color: #FFFFFF;
+    font-size: 18px;
+    position: absolute;
+    right: 10px;
+}
+
+.sidebar-nav.collapsed .navigation-list li .text,
+.sidebar-nav.collapsed .navigation-list li::after {
+    display: none;
 }

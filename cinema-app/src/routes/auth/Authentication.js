@@ -1,78 +1,86 @@
-import './auth.css';
 import React, { useState } from 'react';
-import Login from "./Login.js";
-import Register from "./Register.js";
-import axios from "axios";
+import PropTypes from 'prop-types';
+import './auth.css';
+import axios from 'axios';
+import Login from './Login';
+import Register from './Register';
 
-
-export default function Authentication({ setIsLoggedIn, setUserUsername }) {
+export default function Authentication({ setIsLoggedIn = () => { }, setUserUsername = () => { } }) {
     const [_switch, setSwitch] = useState(true);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        if (_switch) {
-            axios.post('http://localhost:8000/api/auth/login', {
-                username,
-                password,
-            })
-                .then((response) => {
-                    if (response.data.accessToken) {
-                        localStorage.setItem('accessToken', response.data.accessToken);
-                        setUserUsername(username);
-                        setIsLoggedIn(true);
-                    }
+    const handleSignInClick = () => {
+        setSwitch(true);
+    };
+    const handleSignUpClick = () => {
+        setSwitch(false);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            let response;
+            if (_switch) {
+                response = await axios.post('http://localhost:8000/api/auth/login/', {
+                    username,
+                    password
                 });
-        } else {
-            axios.post('http://localhost:8000/api/auth/register', {
-                username,
-                password,
-            })
-                .then((response) => {
-                    if (response.data.accessToken) {
-                        localStorage.setItem('accessToken', response.data.accessToken);
-                        setUserUsername(username);
-                        setIsLoggedIn(true);
-                    }
-                })
-                .catch((error) => {
+            } else {
+                response = await axios.post('http://localhost:8000/api/auth/register/', {
+                    username,
+                    password
                 });
+            }
+            const { accessToken } = response.data;
+            localStorage.setItem('accessToken', accessToken);
+            setIsLoggedIn(true);
+            setUserUsername(username);
+        } catch (err) {
+            console.error('Error during authentication:', err);
         }
     }
+
     return (
-        <div className="auth">
-            <form className="authentication" onSubmit={handleSubmit}>
-                <ul>
-                    <li
-                        onClick={() => handleSwitch(true)}
-                        className={_switch ? "active" : ""}
-                    >
-                        Sign in
-                    </li>
-                    <li
-                        onClick={() => handleSwitch(false)}
-                        className={!_switch ? "active" : ""}
-                    >
-                        Sign up
-                    </li>
-                </ul>
+        <div className="authentication-container">
+            <div className="button-group">
+                <button
+                    onClick={handleSignInClick}
+                    className={_switch ? "btn-active" : "btn-inactive"}
+                >
+                    Sign In
+                </button>
+                <button
+                    onClick={handleSignUpClick}
+                    className={!_switch ? "btn-active" : "btn-inactive"}
+                >
+                    Sign Up
+                </button>
+            </div>
+            <form onSubmit={handleSubmit}>
                 {_switch ? (
                     <Login
                         username={username}
-                        setUsername={setUsername}
                         password={password}
+                        setUsername={setUsername}
                         setPassword={setPassword}
+                        handleSubmit={handleSubmit}
                     />
                 ) : (
                     <Register
                         username={username}
-                        setUsername={setUsername}
                         password={password}
+                        setUsername={setUsername}
                         setPassword={setPassword}
+                        handleSubmit={handleSubmit}
                     />
                 )}
             </form>
         </div>
     );
 }
+
+Authentication.propTypes = {
+    setIsLoggedIn: PropTypes.func.isRequired,
+    setUserUsername: PropTypes.func.isRequired
+};

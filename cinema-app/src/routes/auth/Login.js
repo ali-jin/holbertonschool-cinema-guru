@@ -1,31 +1,45 @@
-import './auth.css';
 import React from 'react';
-import { faUser, faKey } from "@fortawesome/free-solid-svg-icons";
-import Input from "../../components/general/Input";
-import Button from "../../components/general/Button";
+import PropTypes from 'prop-types';
+import './auth.css';
+import Input from '../../components/general/Input';
+import Button from '../../components/general/Button';
+import { faUser, faKey } from '@fortawesome/free-solid-svg-icons';
 
+export default function Login({ username, password, setUsername, setPassword, handleSubmit }) {
 
-export default function Login({ username, password, setUsername, setPassword }) {
     return (
-        <div className="loginpage">
-            <h1>Sign in with your account</h1>
+        <div className="login-form">
+            <p>Sign in with your account</p>
             <Input
+                label="Username"
                 type="text"
-                icon={faUser}
-                label="Username:"
+                className="input-username"
                 value={username}
-                className="input username"
                 setValue={setUsername}
+                icon={faUser}
             />
             <Input
+                label="Password"
                 type="password"
-                icon={faKey}
-                label={"Password: "}
+                className="input-password"
                 value={password}
-                className="input password"
                 setValue={setPassword}
+                icon={faKey}
             />
-            <Button text="Sign In" className="button" icon={faKey} type="submit" />
+            <Button
+                label="Sign In"
+                className="login-button"
+                icon={faKey}
+                onClick={handleSubmit}
+            />
         </div>
     );
+}
+
+Login.propTypes = {
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    setUsername: PropTypes.func.isRequired,
+    setPassword: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired
 };

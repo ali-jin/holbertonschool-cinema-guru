@@ -1,82 +1,75 @@
-:root {
-    background-color: #1c1c1c;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.authentication-container {
+    width: 450px;
+    height: 361px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
 }
 
-.auth {
+.button-group {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    justify-content: space-between;
 }
 
-.authentication {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    padding-bottom: 20px;
-}
-
-.authentication ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    margin-right: 0;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: inherit;
-}
-
-.authentication ul li {
-    text-align: center;
-    background-color: #e31c25;
+.button-group button {
+    flex: 1;
+    height: 48px;
+    color: #ffffff;
+    border: none;
     cursor: pointer;
-    width: 225px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: white;
-    font-weight: 700;
+    font-size: 16px;
 }
 
-.input {
-    width: 300px;
-    margin-top: 20px;
+.btn-active {
+    background-color: #e31c25;
 }
 
-.input input {
-    width: inherit;
+.btn-inactive {
+    background-color: #BB000E;
 }
 
-.input label {
-    padding-left: 6px;
-}
-
-.active {
-    background-color: #bb000e !important;
-    transition: background-color 0.3s;
-}
-
-.authentication h1 {
-    font-size: large;
-    margin-top: 40px;
-    margin-bottom: 30px;
-}
-
-.button {
-    display: block;
-    margin-top: 30px;
-    float: right;
-    background-color: #bb000e;
-    color: white;
-}
-
-.login {
+.login-form,
+.register-form {
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    float: right;
-    background-color: white;
-    padding-bottom: 20px;
+
+}
+
+.login-form button,
+.register-form button {
+    justify-items: end;
+}
+
+.login-form p,
+.register-form p {
+    text-align: center;
+    font-size: 19px;
+    margin-bottom: 20px;
+}
+
+.login-button,
+.register-button {
+    width: 104px;
+    height: 34px;
+    padding: 10px;
+    background-color: #d32f2f;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: background-color 0.3s;
+    align-self: flex-end;
+}
+
+.login-button:hover,
+.register-button:hover {
+    background-color: #b71c1c;
 }

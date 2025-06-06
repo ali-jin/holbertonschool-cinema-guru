@@ -1,9 +1,10 @@
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Authentication from './routes/auth/Authentication';
 import axios from 'axios';
 import Dashboard from './routes/dashboard/Dashboard';
 
-function App() {
+export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
 
@@ -42,5 +43,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
