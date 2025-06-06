@@ -1,0 +1,13 @@
+.activity {
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+}
+
+.activity b {
+    font-weight: bold;
+    color: var(--primary-light);
+}
+
+.activity em {
+    font-style: italic;
+}

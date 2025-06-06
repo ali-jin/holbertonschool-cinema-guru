@@ -5,7 +5,7 @@ import Input from "../../components/general/Input";
 import Button from "../../components/general/Button";
 
 
-export default function Register(username, password, setUsername, setPassword) {
+export default function Register( {username, password, setUsername, setPassword} ) {
     return (
         <div className="loginpage">
             <h1>Create your account</h1>

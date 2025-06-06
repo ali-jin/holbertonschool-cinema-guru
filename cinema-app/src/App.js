@@ -1,35 +1,45 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import Authentication from './routes/auth/Authentication';
 import axios from 'axios';
+import Dashboard from './routes/dashboard/Dashboard';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userUsername, setUserUsername] = useState("");
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
-    axios.post("http://localhost:8000/api/auth/", {}, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
-      .then((response) => {
-        setIsLoggedIn(true);
-        setUsername(response.data.username);
+    const accessToken = localStorage.getItem('accessToken');
+
+    if (accessToken) {
+      axios.post('http://localhost:8000/api/auth/', {}, {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`
+        }
       })
-      .catch((error) => {
-        setIsLoggedIn(false);
-        setUsername("");
-      });
+        .then(res => {
+          setIsLoggedIn(true);
+          setUsername(res.data.username);
+        })
+        .catch(err => {
+          console.error('Authentication failed:', err);
+        });
+    }
   }, []);
 
-  return isLoggedIn ? (
-    <Dashboard userUsername={userUsername} setIsLoggedIn={setIsLoggedIn} />
-  ) : (
-    <Authentication
-      setIsLoggedIn={setIsLoggedIn}
-      setUserUsername={setUsername}
-    />
+  return (
+    <div className="App">
+      {isLoggedIn ? (
+        <Dashboard
+          userUsername={username}
+          setIsLoggedIn={setIsLoggedIn}
+        />
+      ) : (
+        <Authentication
+          setIsLoggedIn={setIsLoggedIn}
+          setUserUsername={setUsername}
+        />
+      )}
+    </div>
   );
 }
 

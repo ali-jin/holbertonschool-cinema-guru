@@ -5,7 +5,7 @@ import Input from "../../components/general/Input";
 import Button from "../../components/general/Button";
 
 
-export default function Login(username, password, setUsername, setPassword) {
+export default function Login({ username, password, setUsername, setPassword }) {
     return (
         <div className="loginpage">
             <h1>Sign in with your account</h1>

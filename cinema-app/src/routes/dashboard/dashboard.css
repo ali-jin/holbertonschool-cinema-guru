@@ -1,0 +1,40 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #222222;
+    height: 100vh;
+    color: white;
+}
+
+.dashboard,
+.fave-movies {
+    background-color: #222222;
+}
+
+.homepage {
+    padding-top: 70px;
+    background-color: #222222;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 3px;
+    padding: 0 2rem;
+    padding-left: 9.375rem;
+}
+
+.fave {
+    color: white;
+    text-align: center;
+}
+
+.fave h1 {
+    font-weight: 400;
+    font-size: 5rem;
+    text-decoration: underline;
+    text-decoration-color: red;
+}

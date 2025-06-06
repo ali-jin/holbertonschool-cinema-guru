@@ -1,0 +1,134 @@
+.header {
+    width: 100%;
+    height: 60px;
+    background-color: #161616;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.header h1 {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 20px;
+}
+
+.header div {
+    display: flex;
+    align-items: center;
+}
+
+.header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 75%;
+    border: 2px solid red;
+}
+
+.header p {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.header span {
+    color: #bb000e;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.header span button {
+    background-color: transparent;
+    color: #bb000e;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.sidebar {
+    width: 60px;
+    height: 100%;
+    background-color: #bb000e;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding-top: 70px;
+}
+
+.sidebar_link li {
+    display: flex;
+}
+
+.sidebar_link li p {
+    margin: 0;
+    display: none;
+}
+
+.sidebar .sidebar_activities {
+    display: none;
+}
+
+.sidebar:hover {
+    width: 250px;
+}
+
+.sidebar:hover .sidebar_activities {
+    display: block;
+}
+
+.sidebar:hover .sidebar_link li p {
+    display: block;
+}
+
+.sidebar .sidebar_link {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar .sidebar_link li {
+    color: white;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    background-color: #bb000e;
+    text-align: left;
+    cursor: pointer;
+}
+
+.sidebar .sidebar_link li svg {
+    margin-right: 10px;
+}
+
+.sidebar .sidebar_link li:hover {
+    background-color: #e31c25;
+}
+
+.sidebar .sidebar_activities {
+    color: white;
+    background-color: #2c2c2c;
+    padding: 10px 20px;
+    list-style: none;
+    text-align: left;
+    margin: 10px;
+}
+
+.sidebar .sidebar_activities button {
+    text-decoration: underline;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+}
